@@ -13,16 +13,24 @@ export const Program = () => {
 
   const [isExpressFit, setIsExpressFit] = useState(false);
   const [isSlim, setIsSlim] = useState(false);
-  // const [monday, setMonday] = useState(false);
-  // const [tuesday, setTuesday] = useState(false);
 
   const { programs, getData } = useContext(AppContext);
 
   useEffect(() => {
     getData();
-  }, [])
+  }, []);
 
-  console.log(programs);
+  const onExpressFit = () => {
+    setIsSlim(false);
+    setIsExpressFit(true);
+  };
+
+  const onSlim = () => {
+    setIsExpressFit(false);
+    setIsSlim(true);
+  };
+
+  // console.log(programs);
   return (
     <>
       <section className={styles.program}>
@@ -41,7 +49,11 @@ export const Program = () => {
               {programs.expressFit ? (
                 <>
                   {programs.expressFit.map((program) => (
-                    <li key={program.id} className={styles.item}>
+                    <li
+                      key={program.id}
+                      className={styles.item}
+                      onClick={() => onExpressFit()}
+                    >
                       <span className={styles.name}>{program.name}</span>
                       <span className={styles.calorie}>{program.calories}</span>
                     </li>
@@ -53,7 +65,11 @@ export const Program = () => {
               {programs.slim ? (
                 <>
                   {programs.slim.map((program) => (
-                    <li key={program.id} className={styles.item}>
+                    <li
+                      key={program.id}
+                      className={styles.item}
+                      onClick={() => onSlim()}
+                    >
                       <span className={styles.name}>{program.name}</span>
                       <span className={styles.calorie}>{program.calories}</span>
                     </li>
@@ -62,12 +78,6 @@ export const Program = () => {
               ) : (
                 ""
               )}
-              {/* {programs.map((program) => (
-                <li key={program.id} className={styles.item}>
-                  <span className={styles.name}>{program.name}</span>
-                  <span className={styles.calorie}>{program.calories}</span>
-                </li>
-              ))} */}
             </ul>
 
             <div className={styles.block}>

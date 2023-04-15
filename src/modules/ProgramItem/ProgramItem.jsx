@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProgramItem.module.sass";
+import { ButtonWeek } from "../../components/ButtonWeek/ButtonWeek";
+import { ProgramList } from "../ProgramList/ProgramList";
 
 export const ProgramItem = ({ program }) => {
+
+  const [monday, setMonday] = useState(true);
+  const [tuesday, setTuesday] = useState(false);
+
   return (
     <>
       <div className={styles.info}>
@@ -36,45 +42,23 @@ export const ProgramItem = ({ program }) => {
       </div>
       <div className={styles.chart}>
         <div className={styles.day}>
-          {program.weekDay.map((item) => (
-            <button key={item.id} className={styles.button}>
-              {item}
-            </button>
-          ))}
+          <ButtonWeek setMonday={setMonday} setTuesday={setTuesday} />
         </div>
         <div className={styles.menu}>
-          {program.monday.map((item) => (
-            <ul key={item.id} className={styles.listProgram}>
-              <li className={styles.itemProgram}>
-                <h4 className={styles.titleProgram}>{item.title}</h4>
-                <span className={styles.span}>{item.time}</span>
-              </li>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  width: "100%",
-                }}
-              >
-                {item.menu.map((item) => (
-                  <>
-                    <li
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <span key={item.id} className={styles.span}>
-                        {item.title}
-                      </span>
-
-                      <span className={styles.span}>{item.total}</span>
-                    </li>
-                  </>
-                ))}
-              </div>
-            </ul>
-          ))}
+          {monday && (
+            <>
+              {program.monday.map((item, id) => (
+                <ProgramList key={id} item={item} />
+              ))}
+            </>
+          )}
+          {tuesday && (
+            <>
+              {program.tuesday.map((item, id) => (
+                <ProgramList key={id} item={item} />
+              ))}
+            </>
+          )}
         </div>
       </div>
       {/* <div className={styles.info}>
