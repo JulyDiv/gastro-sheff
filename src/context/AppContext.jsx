@@ -5,7 +5,7 @@ const AppContext = createContext();
 
 const AppWrapper = ({ children }) => {
 
-  const [program, setProgram] = useState([]);
+  const [programs, setPrograms] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const getData = async () => {
@@ -13,7 +13,7 @@ const AppWrapper = ({ children }) => {
     return await axios
       .get(`http://localhost:3000/api/program`)
       .then(({ data }) => {
-        setProgram(data);
+        setPrograms(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -22,7 +22,7 @@ const AppWrapper = ({ children }) => {
   };
 
   const contextValue = {
-    program, setProgram, getData,
+    programs, setPrograms, getData,
   };
 
   return (

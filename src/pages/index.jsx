@@ -14,9 +14,9 @@ export default function Home() {
       </Head>
       <div className="circle">
         <Header />
-        <div style={{ height: "1000px" }}></div>
+        {/* <div style={{ height: "1000px" }}></div> */}
         <Program />
-        <PhotoHome />
+        {/* <PhotoHome /> */}
         <Footer />
       </div>
     </>
