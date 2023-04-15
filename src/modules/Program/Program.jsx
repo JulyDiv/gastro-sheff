@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./Program.module.sass";
 import { AppContext } from "../../context/AppContext";
 import { ProgramItem } from "../ProgramItem/ProgramItem";
@@ -10,6 +10,11 @@ import { ProgramItem } from "../ProgramItem/ProgramItem";
 // import { DayProgram } from "../DayProgram/DayProgram";
 
 export const Program = () => {
+
+  const [isExpressFit, setIsExpressFit] = useState(false);
+  const [isSlim, setIsSlim] = useState(false);
+  // const [monday, setMonday] = useState(false);
+  // const [tuesday, setTuesday] = useState(false);
 
   const { programs, getData } = useContext(AppContext);
 
@@ -33,18 +38,53 @@ export const Program = () => {
               </button>
             </div>
             <ul className={styles.list}>
-              {programs.map((program) => (
+              {programs.expressFit ? (
+                <>
+                  {programs.expressFit.map((program) => (
+                    <li key={program.id} className={styles.item}>
+                      <span className={styles.name}>{program.name}</span>
+                      <span className={styles.calorie}>{program.calories}</span>
+                    </li>
+                  ))}
+                </>
+              ) : (
+                ""
+              )}
+              {programs.slim ? (
+                <>
+                  {programs.slim.map((program) => (
+                    <li key={program.id} className={styles.item}>
+                      <span className={styles.name}>{program.name}</span>
+                      <span className={styles.calorie}>{program.calories}</span>
+                    </li>
+                  ))}
+                </>
+              ) : (
+                ""
+              )}
+              {/* {programs.map((program) => (
                 <li key={program.id} className={styles.item}>
                   <span className={styles.name}>{program.name}</span>
                   <span className={styles.calorie}>{program.calories}</span>
                 </li>
-              ))}
+              ))} */}
             </ul>
 
             <div className={styles.block}>
-              {programs.map((program, id) => (
-                <ProgramItem key={id} program={program} />
-              ))}
+              {isExpressFit && (
+                <>
+                  {programs.expressFit.map((program, id) => (
+                    <ProgramItem key={id} program={program} />
+                  ))}
+                </>
+              )}
+              {isSlim && (
+                <>
+                  {programs.slim.map((program, id) => (
+                    <ProgramItem key={id} program={program} />
+                  ))}
+                </>
+              )}
             </div>
 
             {/* <div className={styles.block}>
