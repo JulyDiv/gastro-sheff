@@ -1,0 +1,38 @@
+@import '../../styles/var'
+.navbar
+    display: flex
+    justify-content: space-between
+    height: 52px
+.phone
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 280px
+    color: $green
+    +font-mont-700
+    font-size: 20px
+    +br190
+    box-shadow: $box-shadow
+    background-color: $bg-color
+    &:hover
+        color: $bg-color
+        border: 3px solid $bg-color
+        background-color: $green
+.wrapper
+    display: flex
+    justify-content: flex-end
+    width: 880px
+    +br190
+    box-shadow: $box-shadow
+    background-color: $bg-color
+.list
+    display: flex
+    align-items: center
+.item
+    margin-right: 40px
+    &:hover
+        color: $green
+        +font-mont-500
+.link
+    font-size: 14px
+    +font-mont-400

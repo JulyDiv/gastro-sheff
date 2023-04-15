@@ -1,0 +1,54 @@
+@import '../../styles/var'
+
+.footer
+    //margin-bottom: 100px
+    //padding-bottom: 100px
+    box-shadow: 0px 0px 30px rgba(86, 86, 86, 0.25)
+.wrapper
+    display: flex
+    justify-content: space-between
+    padding: 23px 0 44px 0
+.block
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    width: 227px
+.left
+    align-items: flex-start
+.right
+    align-items: flex-end
+.link
+    font-size: 20px
+    line-height: 22px
+    +font-comf-700
+.img
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 422px
+    height: 179px
+.icon
+    display: inline-block
+    width: 30px
+    height: 30px
+    background-position: center
+    background-repeat: no-repeat
+    //background-size: 100%
+    &_instagram
+        background-image: url(../../../public/img/instagram.svg)
+    &_facebook
+        background-image: url(../../../public/img/facebook.svg)
+    &_wapp
+        background-image: url(../../../public/img/wapp.svg)
+    &_telegram
+        background-image: url(../../../public/img/telegram.svg)
+    &_block
+        display: flex
+        justify-content: space-between
+        width: 165px
+.phone
+    color: $green
+    font-size: 20px
+    line-height: 24px
+    +font-mont-700

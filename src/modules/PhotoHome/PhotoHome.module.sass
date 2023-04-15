@@ -1,0 +1,41 @@
+@import '../../styles/var'
+
+.photo
+    padding: 0 0 150px 0
+.title
+    text-align: center
+    font-size: 30px
+    line-height: 33px
+    color: $black
+    +font-comf-700
+.wrapper
+    position: relative
+    display: flex
+    justify-content: space-between
+    padding: 60px 0 0 0
+    &::after
+        position: absolute
+        bottom: -20%
+        left: 10%
+        z-index: -1
+        content: ''
+        width: 185px
+        height: 185px
+        border: 15px solid rgba(38, 240, 58, 0.1)
+        border-radius: 50%
+    &::before
+        position: absolute
+        top: 0
+        left: 0
+        z-index: -1
+        content: ''
+        width: 299px
+        height: 299px
+        border: 20px solid rgba(38, 240, 58, 0.1)
+        border-radius: 50%
+.img
+    //margin-right: 30px
+    width: 380px
+    height: 570px
+    border-radius: 30px
+    filter: drop-shadow(0px 0px 20px rgba(86, 86, 86, 0.5))
