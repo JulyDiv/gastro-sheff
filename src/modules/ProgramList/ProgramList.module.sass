@@ -1,13 +1,17 @@
 @import '../../styles/var'
 
-.listProgram
+.list
     display: flex
     justify-content: space-between
-.titleProgram
+    cursor: pointer
+    &:hover
+        color: $green
+.title
     font-size: 20px
     line-height: 24px
     +font-mont-400
-.itemProgram
+    cursor: pointer
+.item
     display: flex
     flex-direction: column
     flex-shrink: 0
@@ -15,7 +19,16 @@
     font-size: 18px
     line-height: 22px
     +font-mont-300
+    &:hover
+        color: $green
 .span
     font-size: 18px
     line-height: 22px
     +font-mont-500
+.block
+    display: flex
+    flex-direction: column
+    width: 100%
+.name
+    display: flex
+    justify-content: space-between

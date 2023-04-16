@@ -1,0 +1,19 @@
+@import '../../styles/var'
+
+.list
+    display: flex
+    justify-content: space-between
+    font-size: 15px
+    line-height: 18px
+    +font-mont-400
+.item
+    display: flex
+    width: 60px
+    cursor: pointer
+    &:hover
+        color: $green
+    &_name
+        align-items: flex-start
+        width: 150px
+    &_price
+        text-decoration: line-through

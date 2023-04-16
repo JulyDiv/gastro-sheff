@@ -1,0 +1,28 @@
+@import '../../styles/var'
+
+.main
+    position: relative
+    padding: 0 0 150px 0
+    &::after
+        position: absolute
+        top: 150px
+        left: -20%
+        z-index: -1
+        content: ''
+        width: 519px
+        height: 519px
+        border-radius: 50%
+        border: 30px solid rgba(38, 240, 58, 0.1)
+    &::before
+        position: absolute
+        top: -300px
+        right: -10%
+        z-index: -1
+        content: ''
+        width: 603px
+        height: 603px
+        background-color: rgba(38, 240, 58, 0.1)
+        border-radius: 50%
+.wrapper
+    display: flex
+    justify-content: space-between

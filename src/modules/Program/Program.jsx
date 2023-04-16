@@ -3,14 +3,10 @@ import React, { useState, useContext, useEffect } from "react";
 import styles from "./Program.module.sass";
 import { AppContext } from "../../context/AppContext";
 import { ProgramItem } from "../ProgramItem/ProgramItem";
-// import { InfoBlock } from "../InfoBlock/InfoBlock";
-// import { MenuProgram } from "../MenuProgram/MenuProgram";
-// import { Price } from "../Price/Price";
-// import { InfoProgram } from "../InfoProgram/InfoProgram";
-// import { DayProgram } from "../DayProgram/DayProgram";
+import { InfoBlock } from "../InfoBlock/InfoBlock";
+import { ProgramName } from "../ProgramName/ProgramName";
 
 export const Program = () => {
-
   const [isExpressFit, setIsExpressFit] = useState(false);
   const [isSlim, setIsSlim] = useState(false);
 
@@ -34,7 +30,7 @@ export const Program = () => {
   return (
     <>
       <section className={styles.program}>
-        {/* <InfoBlock /> */}
+        <InfoBlock />
         <div className="container">
           <div className={styles.wrapper}>
             <div className={styles.button}>
@@ -48,15 +44,9 @@ export const Program = () => {
             <ul className={styles.list}>
               {programs.expressFit ? (
                 <>
-                  {programs.expressFit.map((program) => (
-                    <li
-                      key={program.id}
-                      className={styles.item}
-                      onClick={() => onExpressFit()}
-                    >
-                      <span className={styles.name}>{program.name}</span>
-                      <span className={styles.calorie}>{program.calories}</span>
-                    </li>
+                  {programs.expressFit.map((program, id) => (
+                    <ProgramName key={id} program={program} onClick={onExpressFit}
+                    />
                   ))}
                 </>
               ) : (
@@ -64,15 +54,8 @@ export const Program = () => {
               )}
               {programs.slim ? (
                 <>
-                  {programs.slim.map((program) => (
-                    <li
-                      key={program.id}
-                      className={styles.item}
-                      onClick={() => onSlim()}
-                    >
-                      <span className={styles.name}>{program.name}</span>
-                      <span className={styles.calorie}>{program.calories}</span>
-                    </li>
+                  {programs.slim.map((program, id) => (
+                    <ProgramName key={id} program={program} onClick={onSlim} />
                   ))}
                 </>
               ) : (
@@ -96,20 +79,6 @@ export const Program = () => {
                 </>
               )}
             </div>
-
-            {/* <div className={styles.block}>
-              <div className={styles.info}>
-                <InfoProgram />
-                <Price />
-                <button className={`${styles.info_button} button`}>
-                  Заказать
-                </button>
-              </div>
-              <div className={styles.chart}>
-                <DayProgram />
-                <MenuProgram />
-              </div>
-            </div> */}
           </div>
         </div>
       </section>

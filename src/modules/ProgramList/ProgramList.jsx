@@ -3,25 +3,18 @@ import styles from "./ProgramList.module.sass";
 
 export const ProgramList = ({ item }) => {
     return (
-      <ul key={item.id} className={styles.listProgram}>
-        <li className={styles.itemProgram}>
-          <h4 className={styles.titleProgram}>{item.title}</h4>
+      <ul key={item.id} className={styles.list}>
+        <li className={styles.item}>
+          <h4 className={styles.title}>{item.title}</h4>
           <span className={styles.span}>{item.time}</span>
         </li>
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-          }}
+          className={styles.block}
         >
           {item.menu.map((item) => (
             <>
               <li
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
+                className={styles.name}
               >
                 <span key={item.id} className={styles.span}>
                   {item.title}

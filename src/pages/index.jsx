@@ -3,6 +3,8 @@ import { Header } from "../modules/Header/Header";
 import { Footer } from "../modules/Footer/Footer";
 import { PhotoHome } from "../modules/PhotoHome/PhotoHome";
 import { Program } from "../modules/Program/Program";
+import { Sidebar } from "../modules/Sidebar/Sidebar";
+import { Main } from "../modules/Main/Main";
 
 export default function Home() {
   return (
@@ -14,9 +16,12 @@ export default function Home() {
       </Head>
       <div className="circle">
         <Header />
-        {/* <div style={{ height: "1000px" }}></div> */}
+        <div style={{ height: "800px" }}>
+          <Sidebar />
+        </div>
         <Program />
-        {/* <PhotoHome /> */}
+        <PhotoHome />
+        <Main />
         <Footer />
       </div>
     </>

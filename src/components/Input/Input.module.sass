@@ -1,0 +1,44 @@
+@import '../../styles/var'
+
+.form
+    display: flex
+    flex-direction: column
+.label
+    margin: 0 0 5px 18px
+    color: $black
+    font-size: 18px
+    line-height: 133.8%
+    +font-comf-700
+    &_error
+        color: $pink
+    &_active
+        color: $green
+.block
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-bottom: 30px
+    height: 40px
+    background-color: $grey
+    border: 1px solid transparent
+    +br190
+    &:hover, &:active
+        border: 1px solid $green
+.input
+    padding: 10px 50px 10px 20px
+    width: 93%
+    height: 100%
+    color: $black
+    font-size: 16px
+    line-height: 133.8%
+    +font-mont-400
+.indicator
+    margin-right: 13px
+    width: 14px
+    height: 14px
+    border-radius: 50%
+    background-color: $grey
+    &_active
+        background-color: $green
+    &_error
+        background-color: $pink
