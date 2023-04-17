@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import styles from "./ButtonAcc.module.sass";
 
-export const ButtonAcc = ({ title, text, isAcc, setIsAcc }) => {
+export const ButtonAcc = ({ title, text }) => {
 
+  const [isAcc, setIsAcc] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const onClick = () => {
