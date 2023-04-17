@@ -1,70 +1,59 @@
 @import '../../styles/var'
 
 .nav
-    position: relative
-    //top: 212px
+    position: absolute
+    top: 216px
+    left: 50px
     z-index: 3
-    //width: 70px
-    //height: 670px
+    width: 70px
+    height: 670px
 .list
     display: flex
     flex-direction: column
     justify-content: space-between
     height: 100%
-.span
-    font-size: 26px
-    +font-comf-300
-    &_hidden
-        //display: none
-    &_active
-        color: $green
-        font-size: 25px
-        +font-comf-700
-.item
-    display: flex
-    //flex-direction: column
-    align-items: center
-    justify-content: center
-    width: 70px
-    height: 70px
-    color: $black
-    background-color: $bg-color
-    border-radius: 50%
-    box-shadow: 0px 0px 30px rgba(86, 86, 86, 0.25)
-    cursor: pointer
-    &_active
-        justify-content: space-between
-        padding: 5px 38px 5px 0px
-        width: 188px
-        +br190
-.block
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    height: 100%
 .link
-    width: 70px
-    height: 100%
-    //height: 70px
-    background-repeat: no-repeat
-    background-position: center
     &_calories
-        padding: 10px 38px 10px 10px
-        //height: 100%
+        margin-right: 20px
+        padding-left: 10px
         font-size: 20px
-        //text-align: center
         +font-comf-700
-        //background-position: 50% 50%
+        &:hover
+            color: $green
+        &_active
+            color: $green
     &_fish
+        height: 100%
         background-image: url(../../../public/img/fish.svg)
+        &:hover
+            background-image: url(../../../public/img/fish_hover.svg)
+        &_active
+            background-image: url(../../../public/img/fish_hover.svg)
     &_carrot
+        height: 100%
         background-image: url(../../../public/img/carrot.svg)
+        &:hover
+            background-image: url(../../../public/img/carrot_hover.svg)
+        &_active
+            background-image: url(../../../public/img/carrot_hover.svg)
     &_bottle
+        height: 100%
         background-image: url(../../../public/img/bottle.svg)
+        &:hover
+            background-image: url(../../../public/img/bottle_hover.svg)
+        &_active
+            background-image: url(../../../public/img/bottle_hover.svg)
     &_meat
+        height: 100%
         background-image: url(../../../public/img/meat.svg)
+        &:hover
+            background-image: url(../../../public/img/meat_hover.svg)
+        &_active
+            background-image: url(../../../public/img/meat_hover.svg)
     &_table
         height: 30%
         background-image: url(../../../public/img/table.svg)
-
+        &:hover
+            background-image: url(../../../public/img/table_hover.svg)
+        &_active
+            background-image: url(../../../public/img/table_hover.svg)

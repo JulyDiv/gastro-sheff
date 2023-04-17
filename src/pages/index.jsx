@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <div className="circle">
         <Header />
-        <div style={{ height: "800px" }}>
+        <div style={{ height: "1000px" }}>
           <Sidebar />
         </div>
         <Program />

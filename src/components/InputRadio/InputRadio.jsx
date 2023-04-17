@@ -1,6 +1,7 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./InputRadio.module.sass";
+//import { useForm } from "react-hook-form";
 
 export const InputRadio = ({ label, link, text }) => {
   return (
