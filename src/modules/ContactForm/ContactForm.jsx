@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Input } from "../../components/Input/Input";
 import { InputRadio } from "../../components/InputRadio/InputRadio";
 import styles from "./ContactForm.module.sass";
 
 export const ContactForm = () => {
+
+  const [isActive, setIsActive] = useState(false);
+
   return (
     <>
       <div className={styles.contact}>
@@ -13,10 +16,29 @@ export const ContactForm = () => {
           подробности онлайн
         </p>
         <form className={styles.form}>
-          <Input label="Имя" type="text" />
-          <Input label="Номер телефона" type="number" />
-          <InputRadio text="Тест-день! Получить скидку -30%?" />
-          <InputRadio text="Согласен с" link="условиями сотрудничества" />
+          <Input
+            label="Имя"
+            type="text"
+            isActive={isActive}
+            setIsActive={setIsActive}
+          />
+          <Input
+            label="Номер телефона"
+            type="number"
+            isActive={isActive}
+            setIsActive={setIsActive}
+          />
+          <InputRadio
+            text="Тест-день! Получить скидку -30%?"
+            isActive={isActive}
+            setIsActive={setIsActive}
+          />
+          <InputRadio
+            text="Согласен с"
+            link="условиями сотрудничества"
+            isActive={isActive}
+            setIsActive={setIsActive}
+          />
           <div className={styles.block}>
             <button
               className={`${styles.button} ${styles.button_phone} button`}

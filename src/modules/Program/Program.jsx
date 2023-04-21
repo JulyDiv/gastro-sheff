@@ -7,8 +7,9 @@ import { InfoBlock } from "../InfoBlock/InfoBlock";
 import { ProgramName } from "../ProgramName/ProgramName";
 
 export const Program = () => {
-  const [isExpressFit, setIsExpressFit] = useState(false);
-  const [isSlim, setIsSlim] = useState(false);
+  //const [isExpressFit, setIsExpressFit] = useState(false);
+  //const [isSlim, setIsSlim] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const { programs, getData } = useContext(AppContext);
 
@@ -16,21 +17,20 @@ export const Program = () => {
     getData();
   }, []);
 
-  const onExpressFit = () => {
-    setIsSlim(false);
-    setIsExpressFit(true);
-  };
+  // const onExpressFit = () => {
+  //   setIsSlim(false);
+  //   setIsExpressFit(true);
+  // };
 
-  const onSlim = () => {
-    setIsExpressFit(false);
-    setIsSlim(true);
-  };
+  // const onSlim = () => {
+  //   setIsExpressFit(false);
+  //   setIsSlim(true);
+  // };
 
-  // console.log(programs);
   return (
     <>
       <section className={styles.program}>
-        <InfoBlock />
+        {/* <InfoBlock /> */}
         <div className="container">
           <div className={styles.wrapper}>
             <div className={styles.button}>
@@ -45,7 +45,12 @@ export const Program = () => {
               {programs.expressFit ? (
                 <>
                   {programs.expressFit.map((program, id) => (
-                    <ProgramName key={id} program={program} onClick={onExpressFit}
+                    <ProgramName
+                      key={id}
+                      program={program}
+                      //onClick={onExpressFit}
+                      isActive={isActive}
+                      setIsActive={setIsActive}
                     />
                   ))}
                 </>
@@ -55,7 +60,13 @@ export const Program = () => {
               {programs.slim ? (
                 <>
                   {programs.slim.map((program, id) => (
-                    <ProgramName key={id} program={program} onClick={onSlim} />
+                    <ProgramName
+                      key={id}
+                      program={program}
+                      //onClick={onSlim}
+                      isActive={isActive}
+                      setIsActive={setIsActive}
+                    />
                   ))}
                 </>
               ) : (
@@ -64,7 +75,21 @@ export const Program = () => {
             </ul>
 
             <div className={styles.block}>
-              {isExpressFit && (
+              {isActive === "Express Fit" && (
+                <>
+                  {programs.expressFit.map((program, id) => (
+                    <ProgramItem key={id} program={program} />
+                  ))}
+                </>
+              )}
+              {isActive === "Slim" && (
+                <>
+                  {programs.slim.map((program, id) => (
+                    <ProgramItem key={id} program={program} />
+                  ))}
+                </>
+              )}
+              {/* {isExpressFit && (
                 <>
                   {programs.expressFit.map((program, id) => (
                     <ProgramItem key={id} program={program} />
@@ -77,7 +102,7 @@ export const Program = () => {
                     <ProgramItem key={id} program={program} />
                   ))}
                 </>
-              )}
+              )} */}
             </div>
           </div>
         </div>

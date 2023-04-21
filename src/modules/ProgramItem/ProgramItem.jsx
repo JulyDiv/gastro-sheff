@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import styles from "./ProgramItem.module.sass";
+import { weekdayData } from "../../utils/weekday";
 import { ButtonWeek } from "../../components/ButtonWeek/ButtonWeek";
 import { ProgramList } from "../ProgramList/ProgramList";
 import { ProgramWeek } from "../ProgramWeek/ProgramWeek";
 
 export const ProgramItem = ({ program }) => {
-  const [monday, setMonday] = useState(true);
+  const [monday, setMonday] = useState(false);
   const [tuesday, setTuesday] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   return (
     <div className={styles.block}>
@@ -26,23 +28,60 @@ export const ProgramItem = ({ program }) => {
 
       <div className={styles.chart}>
         <div className={styles.day}>
-          <ButtonWeek setMonday={setMonday} setTuesday={setTuesday} />
+          {weekdayData.map(({ title, id }) => (
+            <ButtonWeek
+              key={id}
+              title={title}
+              isActive={isActive}
+              setIsActive={setIsActive}
+            />
+          ))}
+          {/* {program.monday.map(({ name, id }) => (
+            <ButtonWeek
+              key={id}
+              name={name}
+              isActive={isActive}
+              setIsActive={setIsActive}
+            />
+          ))}
+          {program.tuesday.map(({ name, id }) => (
+            <ButtonWeek
+              key={id}
+              name={name}
+              isActive={isActive}
+              setIsActive={setIsActive}
+            />
+          ))} */}
         </div>
         <div className={styles.menu}>
-          {monday && (
+          {isActive === "ПН" && (
             <>
               {program.monday.map((item, id) => (
                 <ProgramList key={id} item={item} />
               ))}
             </>
           )}
-          {tuesday && (
+          {isActive === "ВТ" && (
             <>
               {program.tuesday.map((item, id) => (
                 <ProgramList key={id} item={item} />
               ))}
             </>
           )}
+          {/* {monday && (
+            <>
+              {program.monday.map((item, id) => (
+                <ProgramList key={id} item={item} />
+              ))}
+            </>
+          )} */}
+          {/* {tuesday && (
+            <>
+              {program.tuesday.map((item, id) => (
+                <ProgramList key={id} item={item} />
+              ))}
+            </>
+          )} */}
         </div>
       </div>
     </div>

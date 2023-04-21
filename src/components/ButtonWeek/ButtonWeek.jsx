@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ButtonWeek.module.sass";
 
-export const ButtonWeek = ({ setMonday, setTuesday }) => {
+export const ButtonWeek = ({
+  title,
+  name,
+  setIsActive,
+  isActive
+}) => {
 
-  const onMonday = () => {
-    setTuesday(false);
-    setMonday(true);
-  };
-
-  const onTuesday = () => {
-    setMonday(false);
-    setTuesday(true);
+  const onClick = (name) => {
+    setIsActive((current) => !current);
+    setIsActive(name);
+    console.log(isActive);
   };
 
   return (
     <>
-      <button className={styles.button} onClick={() => onMonday()}>
+      {/* <button
+        className={
+          isActive === name
+            ? `${styles.button} ${styles.button_active}`
+            : `${styles.button}`
+        }
+        onClick={() => onClick(name)}
+      >
+        {name}
+      </button> */}
+      <button
+        className={
+          isActive === title
+            ? `${styles.button} ${styles.button_active}`
+            : `${styles.button}`
+        }
+        onClick={() => onClick(title)}
+      >
+        {title}
+      </button>
+      {/* <button className={isActive ? `${styles.button} ${styles.button_active}` : `${styles.button}`} onClick={() => onMonday()}>
         пн
       </button>
       <button className={styles.button} onClick={() => onTuesday()}>
@@ -35,7 +56,7 @@ export const ButtonWeek = ({ setMonday, setTuesday }) => {
       </button>
       <button className={styles.button} onClick={() => {}}>
         вс
-      </button>
+      </button> */}
     </>
   );
 };

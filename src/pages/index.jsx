@@ -15,14 +15,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="circle">
-        <Header />
-        <div style={{ height: "1000px" }}>
+        {/* <Header /> */}
+        {/* <div style={{ height: "1000px" }}>
           <Sidebar />
-        </div>
+        </div> */}
         <Program />
-        <PhotoHome />
+        {/* <PhotoHome /> */}
         <Main />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

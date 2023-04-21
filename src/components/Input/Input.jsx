@@ -6,9 +6,16 @@ export const Input = ({ label, type }) => {
 
   const [isActive, setIsActive] = useState(false);
 
-  const onClick = () => {
-    // setIsActive(true);
-    setIsActive((current) => !current);
+  const onClick = (label) => {
+    //setIsActive((current) => !current);
+    setIsActive(label);
+    if (isActive === "Имя") {
+      setIsActive(false);
+    }
+    if (isActive === "Номер телефона") {
+      setIsActive(false);
+    }
+    //console.log(isActive);
   };
 
   return (
@@ -16,7 +23,7 @@ export const Input = ({ label, type }) => {
       <div className={styles.form}>
         <label
           className={
-            isActive
+            isActive === label
               ? `${styles.label} ${styles.label_active}`
               : `${styles.label}`
           }
@@ -25,11 +32,11 @@ export const Input = ({ label, type }) => {
         </label>
         <div
           className={
-            isActive
+            isActive === label
               ? `${styles.block} ${styles.block_active}`
               : `${styles.block}`
           }
-          onClick={() => onClick()}
+          onClick={() => onClick(label)}
         >
           <input className={styles.input} type={type} />
           <div
