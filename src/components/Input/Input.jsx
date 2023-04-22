@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import styles from "./Input.module.sass";
-//import { useForm } from "react-hook-form";
 
-export const Input = ({ label, type }) => {
-
+export const Input = ({
+  label,
+  type,
+  register,
+  placeholder,
+  messageErr,
+  item,
+  message,
+  value,
+  errors,
+}) => {
   const [isActive, setIsActive] = useState(false);
 
   const onClick = (label) => {
-    //setIsActive((current) => !current);
     setIsActive(label);
     if (isActive === "Имя") {
       setIsActive(false);
@@ -15,7 +22,6 @@ export const Input = ({ label, type }) => {
     if (isActive === "Номер телефона") {
       setIsActive(false);
     }
-    //console.log(isActive);
   };
 
   return (
@@ -38,12 +44,32 @@ export const Input = ({ label, type }) => {
           }
           onClick={() => onClick(label)}
         >
-          <input className={styles.input} type={type} />
+          <input
+            {...register(item, {
+              required: {
+                value: message ? true : false,
+                message: message,
+              },
+              pattern: {
+                value: value,
+                message: messageErr,
+              },
+            })}
+            style={{ border: errors && "1px solid #a00303" }}
+            className={styles.input}
+            placeholder={placeholder}
+            type={type}
+          />
+          {/* {errors?.message && <span>{errors?.message}</span>} */}
+          {/* <input className={styles.input} type={type} /> */}
           <div
             className={
-              isActive
+              (isActive
                 ? `${styles.indicator} ${styles.indicator_active}`
-                : `${styles.indicator}`
+                : `${styles.indicator}`,
+              errors?.message
+                ? `${styles.indicator} ${styles.indicator_error}`
+                : `${styles.indicator}`)
             }
           ></div>
         </div>

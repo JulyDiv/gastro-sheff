@@ -1,62 +1,67 @@
 @import '../../styles/var'
 
-.form
+.block
     display: flex
     align-items: center
     margin-bottom: 15px
-.block
-    //position: relative
+.label
     display: flex
-    justify-content: center
     align-items: center
-    margin: 0 20px 0px 0
+    margin-right: 20px
     width: 26px
     height: 26px
     background-color: $grey
     border-radius: 50%
     cursor: pointer
-.label
-    margin: 0 20px 0px 0
+.input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    width: 20px
+    height: 20px
+    border-radius: 50%
+.input + .label
+    //display: inline-flex
+    align-items: center
+    justify-content: center
+    user-select: none
+.input + .label::before
+    content: ''
+    flex-shrink: 0
+    flex-grow: 0
     width: 26px
     height: 26px
-    background-color: #DEE6EE
     border-radius: 50%
-.input
-    display: none
+    background-color: $grey
+    //background-repeat: no-repeat
+    //background-position: center center
+    //background-size: 50% 50%
+.input:checked + .label::before
+    width: 12px
+    height: 12px
+    border-radius: 50%
+    background-color: $green
+
+// стили при наведении курсора на checkbox
+.input:not(:disabled):not(:checked) + .label:hover::before
+    //display: flex
+    //align-items: center
+    width: 6px
+    height: 6px
+    background-color: $green
+
+// стили для чекбокса, находящегося в состоянии disabled
+.input:disabled + .label::before
+    background-color: $pink
+
+// стили для активного состояния чекбокса (при нажатии на него)
+.input:not(:disabled):active + .label::before
+    border: 1px solid $green
 .text
     color: $black
     font-size: 16px
     line-height: 133.8%
     +font-comf-700
-// .input
-//     margin: 0 20px 0px 0
-//     width: 26px
-//     height: 26px
-//     background-color: #DEE6EE
-//     border-radius: 50%
-.radio
-    //position: absolute
-    //top: 7px
-    //right: 7px
-    //left: 7px
-    //bottom: 7px
-    width: 12px
-    height: 12px
-    border-radius: 50%
-    background-color: $grey
-    &:hover
-        width: 6px
-        height: 6px
-        background-color: $green
-    &_active
-        width: 12px
-        height: 12px
-        background-color: $green
-// .label
-//     color: $black
-//     font-size: 16px
-//     line-height: 133.8%
-//     +font-comf-700
 .link
     color: $green
     font-size: 16px
