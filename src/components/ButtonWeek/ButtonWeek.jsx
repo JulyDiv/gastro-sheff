@@ -11,7 +11,7 @@ export const ButtonWeek = ({
   const onClick = (name) => {
     setIsActive((current) => !current);
     setIsActive(name);
-    console.log(isActive);
+    //console.log(isActive);
   };
 
   return (

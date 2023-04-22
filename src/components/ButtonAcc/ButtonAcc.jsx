@@ -14,7 +14,6 @@ export const ButtonAcc = ({ title, text }) => {
   };
 
   return (
-    <>
       <div className={styles.wrapper}>
         <button
           className={
@@ -43,6 +42,5 @@ export const ButtonAcc = ({ title, text }) => {
           {isAcc && <p className={styles.text}>{text}</p>}
         </button>
       </div>
-    </>
   );
 };

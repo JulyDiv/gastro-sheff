@@ -5,7 +5,6 @@ import { accordionData } from "../../utils/accordion";
 
 export const Faq = () => {
   return (
-    <>
       <div className={styles.faq}>
         <h3 className={styles.title}>Часто задаваемые вопросы</h3>
         <div className={styles.wrapper}>
@@ -14,6 +13,5 @@ export const Faq = () => {
           ))}
         </div>
       </div>
-    </>
   );
 };

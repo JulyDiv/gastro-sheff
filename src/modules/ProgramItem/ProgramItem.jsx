@@ -6,12 +6,13 @@ import { ProgramList } from "../ProgramList/ProgramList";
 import { ProgramWeek } from "../ProgramWeek/ProgramWeek";
 
 export const ProgramItem = ({ program }) => {
+
   const [monday, setMonday] = useState(false);
   const [tuesday, setTuesday] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <div className={styles.block}>
+    <div key={program.id} className={styles.block}>
       <div className={styles.info}>
         <div className={styles.program}>
           <span className={styles.title}>{program.name}</span>

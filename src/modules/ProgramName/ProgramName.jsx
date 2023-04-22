@@ -8,7 +8,6 @@ export const ProgramName = ({ program, onClick, isActive, setIsActive }) => {
   const onActive = (name) => {
     //onClick();
     setIsActive(name);
-    console.log(isActive);
   };
 
   return (
