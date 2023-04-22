@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input/Input";
-import { InputRadio } from "../../components/InputRadio/InputRadio";
+import { InputCheckbox } from "../../components/InputCheckbox/InputCheckbox";
 import styles from "./ContactForm.module.sass";
 import axios from "axios";
 
@@ -38,8 +38,10 @@ export const ContactForm = () => {
             register={register}
             item={"name"}
             placeholder="Имя"
-            label="Имя"
+            //label="Имя"
+            name="Имя"
             type="text"
+            //id="name"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
             //value={/[A-Za-z]+/i}
@@ -49,24 +51,24 @@ export const ContactForm = () => {
             register={register}
             item={"phone"}
             placeholder="Номер телефона"
-            label="Номер телефона"
+            //label="Номер телефона"
+            name="Номер телефона"
             type="number"
+            //id="phone"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
             //value={/^[1-9]+[0-9]*$/}
             errors={errors.phone}
           />
-          <InputRadio
+          <InputCheckbox
             register={register}
             item={"test"}
             text="Тест-день! Получить скидку -30%?"
             type="checkbox"
             label="test"
             id="test"
-            //isActive={isActive}
-            //setIsActive={setIsActive}
           />
-          <InputRadio
+          <InputCheckbox
             register={register}
             item={"agree"}
             text="Согласен с"
@@ -74,8 +76,6 @@ export const ContactForm = () => {
             type="checkbox"
             label="agree"
             id="agree"
-            //isActive={isActive}
-            //setIsActive={setIsActive}
           />
           <div className={styles.block}>
             <button

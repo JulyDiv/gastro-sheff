@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Input.module.sass";
 
 export const Input = ({
-  label,
+  name,
   type,
   register,
   placeholder,
@@ -12,10 +12,11 @@ export const Input = ({
   value,
   errors,
 }) => {
+
   const [isActive, setIsActive] = useState(false);
 
-  const onClick = (label) => {
-    setIsActive(label);
+  const onClick = (name) => {
+    setIsActive(name);
     if (isActive === "Имя") {
       setIsActive(false);
     }
@@ -24,25 +25,29 @@ export const Input = ({
     }
   };
 
+  console.log(isActive);
+
   return (
     <>
       <div className={styles.form}>
         <label
           className={
-            isActive === label
+            isActive === name
               ? `${styles.label} ${styles.label_active}`
               : `${styles.label}`
           }
+          style={{ color: errors && "#F87676" }}
         >
-          {label}
+          {name}
         </label>
         <div
           className={
-            isActive === label
+            isActive === name
               ? `${styles.block} ${styles.block_active}`
               : `${styles.block}`
           }
-          onClick={() => onClick(label)}
+          style={{ border: errors && "1px solid #F87676" }}
+          onClick={() => onClick(name)}
         >
           <input
             {...register(item, {
@@ -55,22 +60,21 @@ export const Input = ({
                 message: messageErr,
               },
             })}
-            style={{ border: errors && "1px solid #a00303" }}
             className={styles.input}
             placeholder={placeholder}
             type={type}
           />
-          {/* {errors?.message && <span>{errors?.message}</span>} */}
-          {/* <input className={styles.input} type={type} /> */}
           <div
             className={
-              (isActive
+              isActive === name
                 ? `${styles.indicator} ${styles.indicator_active}`
-                : `${styles.indicator}`,
-              errors?.message
-                ? `${styles.indicator} ${styles.indicator_error}`
-                : `${styles.indicator}`)
+                : `${styles.indicator}`
+              // errors
+              //   ? `${styles.indicator} ${styles.indicator_error}`
+              //   : `${styles.indicator}`)
             }
+            //style={{ backgroundColor: errors ? "#F87676" : "#64D370" }}
+            style={{ backgroundColor: errors && "#F87676" }}
           ></div>
         </div>
       </div>

@@ -1,9 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import styles from "./InputRadio.module.sass";
+import styles from "./InputCheckbox.module.sass";
 
-export const InputRadio = ({ link, text, type, register, item, label, id }) => {
-
+export const InputCheckbox = ({ link, text, type, register, item, label, id }) => {
   return (
     <>
       <div className={styles.block}>
