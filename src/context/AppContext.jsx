@@ -11,7 +11,7 @@ const AppWrapper = ({ children }) => {
   const getData = async () => {
     setIsLoading(true);
     return await axios
-      .get(`http://localhost:3000/api/program`)
+      .get(`http://localhost:3001/api/program`)
       .then(({ data }) => {
         setPrograms(data);
         setIsLoading(false);

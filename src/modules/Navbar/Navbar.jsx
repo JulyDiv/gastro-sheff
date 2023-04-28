@@ -10,10 +10,7 @@ export const Navbar = () => {
         <div className={styles.wrapper}>
           <ul className={styles.list}>
             <li className={styles.item}>
-              <Link
-                href="#"
-                className={styles.link}
-              >
+              <Link href="#" className={styles.link}>
                 Програмы питания
               </Link>
             </li>
@@ -39,8 +36,11 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link href="#" className={styles.phone}>
+        {/* <Link href="#" className={styles.phone}>
           +38 (068) 949 - 49 - 19
+        </Link> */}
+        <Link href="#" className={styles.phone}>
+          Заказать звонок
         </Link>
       </div>
     </>

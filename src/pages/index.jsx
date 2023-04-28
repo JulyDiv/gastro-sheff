@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="circle">
-        {/* <Header /> */}
+        <Header />
         {/* <div style={{ height: "1000px" }}>
           <Sidebar />
         </div> */}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ProgramItem.module.sass";
+import Link from "next/link";
 import { weekdayData } from "../../utils/weekday";
 import { ButtonWeek } from "../../components/ButtonWeek/ButtonWeek";
 import { ProgramList } from "../ProgramList/ProgramList";
@@ -24,6 +25,7 @@ export const ProgramItem = ({ program }) => {
             <ProgramWeek key={id} item={item} />
           ))}
         </div>
+        {/* <Link href="#form" className={`${styles.info_button} button`}>Заказать</Link> */}
         <button className={`${styles.info_button} button`}>Заказать</button>
       </div>
 

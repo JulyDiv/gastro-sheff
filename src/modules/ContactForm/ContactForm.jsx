@@ -4,10 +4,9 @@ import { Input } from "../../components/Input/Input";
 import { InputCheckbox } from "../../components/InputCheckbox/InputCheckbox";
 import styles from "./ContactForm.module.sass";
 import axios from "axios";
+import Link from "next/link";
 
 export const ContactForm = () => {
-
-  const [isActive, setIsActive] = useState(false);
 
   const {
     register,
@@ -19,15 +18,29 @@ export const ContactForm = () => {
   });
 
   const onSubmit = (data) => {
-    reset();
-    console.log(data);
+    const { name, phone, test, agree } = data;
+  axios
+    .post(`https://63e3933fc919fe386c09ab87.mockapi.io/order`, {
+      name: name,
+      phone: phone,
+      test: test,
+      agree: agree,
+      date: new Date().toLocaleString(),
+    })
+    .then(({ data }) => {
+      console.log(data);
+      reset();
+    })
+    .catch(function (error) {
+      console.log(error.message);
+    });
   };
 
   //console.log(isActive);
 
   return (
     <>
-      <div className={styles.contact}>
+      <div id="form" className={styles.contact}>
         <h3 className={styles.title}>Оформить заказ</h3>
         <p className={styles.text}>
           Обсудите все детали заказа по телефону или сами укажите все
@@ -85,12 +98,18 @@ export const ContactForm = () => {
               Заказ по телефону
             </button>
             <span className={styles.span}>или</span>
-            <button
+            <Link
+              href="#program"
+              className={`${styles.button} ${styles.button_online} button`}
+            >
+              Онлайн заказ
+            </Link>
+            {/* <button
               type="submit"
               className={`${styles.button} ${styles.button_online} button`}
             >
               Онлайн заказ
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
