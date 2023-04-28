@@ -7,8 +7,7 @@ import { InfoBlock } from "../InfoBlock/InfoBlock";
 import { ProgramName } from "../ProgramName/ProgramName";
 
 export const Program = () => {
-  //const [isExpressFit, setIsExpressFit] = useState(false);
-  //const [isSlim, setIsSlim] = useState(false);
+
   const [isActive, setIsActive] = useState(false);
 
   const { programs, getData } = useContext(AppContext);
@@ -16,18 +15,6 @@ export const Program = () => {
   useEffect(() => {
     getData();
   }, []);
-
-  // const onExpressFit = () => {
-  //   setIsSlim(false);
-  //   setIsExpressFit(true);
-  // };
-
-  // const onSlim = () => {
-  //   setIsExpressFit(false);
-  //   setIsSlim(true);
-  // };
-
-  console.log(programs);
 
   return (
     <>
@@ -52,34 +39,6 @@ export const Program = () => {
                   setIsActive={setIsActive}
                 />
               ))}
-              {/* {programs.expressFit ? (
-                <>
-                  {programs.expressFit.map((program, id) => (
-                    <ProgramName
-                      key={id}
-                      program={program}
-                      isActive={isActive}
-                      setIsActive={setIsActive}
-                    />
-                  ))}
-                </>
-              ) : (
-                ""
-              )}
-              {programs.slim ? (
-                <>
-                  {programs.slim.map((program, id) => (
-                    <ProgramName
-                      key={id}
-                      program={program}
-                      isActive={isActive}
-                      setIsActive={setIsActive}
-                    />
-                  ))}
-                </>
-              ) : (
-                ""
-              )} */}
             </ul>
 
             <div id="program" className={styles.block}>
@@ -91,34 +50,6 @@ export const Program = () => {
                     )
                 )}
               </>
-              {/* {isActive === "Express Fit" && (
-                <>
-                  {programs.expressFit.map((program, id) => (
-                    <ProgramItem key={id} program={program} />
-                  ))}
-                </>
-              )} */}
-              {/* {isActive === "Slim" && (
-                <>
-                  {programs.slim.map((program, id) => (
-                    <ProgramItem key={id} program={program} />
-                  ))}
-                </>
-              )} */}
-              {/* {isExpressFit && (
-                <>
-                  {programs.expressFit.map((program, id) => (
-                    <ProgramItem key={id} program={program} />
-                  ))}
-                </>
-              )}
-              {isSlim && (
-                <>
-                  {programs.slim.map((program, id) => (
-                    <ProgramItem key={id} program={program} />
-                  ))}
-                </>
-              )} */}
             </div>
           </div>
         </div>

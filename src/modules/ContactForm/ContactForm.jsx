@@ -51,10 +51,8 @@ export const ContactForm = () => {
             register={register}
             item={"name"}
             placeholder="Имя"
-            //label="Имя"
             name="Имя"
             type="text"
-            //id="name"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
             //value={/[A-Za-z]+/i}
@@ -64,10 +62,8 @@ export const ContactForm = () => {
             register={register}
             item={"phone"}
             placeholder="Номер телефона"
-            //label="Номер телефона"
             name="Номер телефона"
             type="number"
-            //id="phone"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
             //value={/^[1-9]+[0-9]*$/}
@@ -100,6 +96,7 @@ export const ContactForm = () => {
             <span className={styles.span}>или</span>
             <Link
               href="#program"
+              //onClick={(e) => e.preventDefault()}
               className={`${styles.button} ${styles.button_online} button`}
             >
               Онлайн заказ

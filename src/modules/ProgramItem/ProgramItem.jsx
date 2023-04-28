@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "./ProgramItem.module.sass";
-import Link from "next/link";
 import { weekdayData } from "../../utils/weekday";
 import { ButtonWeek } from "../../components/ButtonWeek/ButtonWeek";
 import { ProgramList } from "../ProgramList/ProgramList";
@@ -8,9 +7,15 @@ import { ProgramWeek } from "../ProgramWeek/ProgramWeek";
 
 export const ProgramItem = ({ program }) => {
 
-  const [monday, setMonday] = useState(false);
-  const [tuesday, setTuesday] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [pack, setPack] = useState("");
+
+  const onClick = () => {
+
+    //console.log(program);
+  };
+
+  console.log(pack);
 
   return (
     <div key={program.id} className={styles.block}>
@@ -22,11 +27,11 @@ export const ProgramItem = ({ program }) => {
         </div>
         <div className={styles.price}>
           {program.pack.map((item, id) => (
-            <ProgramWeek key={id} item={item} />
+            <ProgramWeek key={id} item={item} pack={pack} setPack={setPack} />
           ))}
         </div>
         {/* <Link href="#form" className={`${styles.info_button} button`}>Заказать</Link> */}
-        <button className={`${styles.info_button} button`}>Заказать</button>
+        <button className={`${styles.info_button} button`} onClick={() => onClick()}>Заказать</button>
       </div>
 
       <div className={styles.chart}>
@@ -39,22 +44,6 @@ export const ProgramItem = ({ program }) => {
               setIsActive={setIsActive}
             />
           ))}
-          {/* {program.monday.map(({ name, id }) => (
-            <ButtonWeek
-              key={id}
-              name={name}
-              isActive={isActive}
-              setIsActive={setIsActive}
-            />
-          ))}
-          {program.tuesday.map(({ name, id }) => (
-            <ButtonWeek
-              key={id}
-              name={name}
-              isActive={isActive}
-              setIsActive={setIsActive}
-            />
-          ))} */}
         </div>
         <div className={styles.menu}>
           {isActive === "ПН" && (
@@ -71,20 +60,6 @@ export const ProgramItem = ({ program }) => {
               ))}
             </>
           )}
-          {/* {monday && (
-            <>
-              {program.monday.map((item, id) => (
-                <ProgramList key={id} item={item} />
-              ))}
-            </>
-          )} */}
-          {/* {tuesday && (
-            <>
-              {program.tuesday.map((item, id) => (
-                <ProgramList key={id} item={item} />
-              ))}
-            </>
-          )} */}
         </div>
       </div>
     </div>

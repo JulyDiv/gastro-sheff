@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ProgramWeek.module.sass";
 
-export const ProgramWeek = ({ item }) => {
+export const ProgramWeek = ({ item, pack, setPack }) => {
+
+  const onClick = (item) => {
+    //setPack((current) => !current);
+    setPack(item);
+  }
   return (
-    <ul key={item.id} className={styles.list}>
+    <ul key={item.id} className={styles.list} onClick={() => onClick(item)}>
       <li className={`${styles.item} ${styles.item_name}`}>
         <span>{item.name}</span>
       </li>
