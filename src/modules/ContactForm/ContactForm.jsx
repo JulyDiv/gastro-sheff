@@ -5,8 +5,12 @@ import { InputCheckbox } from "../../components/InputCheckbox/InputCheckbox";
 import styles from "./ContactForm.module.sass";
 import axios from "axios";
 import Link from "next/link";
+import { InputBlock } from "../InputBlock/InputBlock";
+import { ModalOrder } from "../ModalOrder/ModalOrder";
 
 export const ContactForm = () => {
+
+  const [isOpenModalOrder, setIsOpenModalOrder] = useState(false);
 
   const {
     register,
@@ -47,7 +51,7 @@ export const ContactForm = () => {
           подробности онлайн
         </p>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <Input
+          <InputBlock
             register={register}
             item={"name"}
             placeholder="Имя"
@@ -55,7 +59,26 @@ export const ContactForm = () => {
             type="text"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
-            //value={/[A-Za-z]+/i}
+            errors={errors.name}
+          />
+          <InputBlock
+            register={register}
+            item={"phone"}
+            placeholder="Номер телефона"
+            name="Номер телефона"
+            type="number"
+            message="Поле обязательно для ввода"
+            messageErr="Неверные символы"
+            errors={errors.phone}
+          />
+          {/* <Input
+            register={register}
+            item={"name"}
+            placeholder="Имя"
+            name="Имя"
+            type="text"
+            message="Поле обязательно для ввода"
+            messageErr="Неверные символы"
             errors={errors.name}
           />
           <Input
@@ -66,9 +89,8 @@ export const ContactForm = () => {
             type="number"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
-            //value={/^[1-9]+[0-9]*$/}
             errors={errors.phone}
-          />
+          /> */}
           <InputCheckbox
             register={register}
             item={"test"}
@@ -94,22 +116,27 @@ export const ContactForm = () => {
               Заказ по телефону
             </button>
             <span className={styles.span}>или</span>
-            <Link
+            {/* <Link
               href="#program"
-              //onClick={(e) => e.preventDefault()}
               className={`${styles.button} ${styles.button_online} button`}
             >
               Онлайн заказ
-            </Link>
-            {/* <button
-              type="submit"
+            </Link> */}
+            <button
               className={`${styles.button} ${styles.button_online} button`}
+              onClick={() => setIsOpenModalOrder(true)}
             >
               Онлайн заказ
-            </button> */}
+            </button>
           </div>
         </form>
       </div>
+      {/* {!isOpenModalOrder && (
+        <ModalOrder
+          isOpenModalOrder={isOpenModalOrder}
+          setIsOpenModalOrder={setIsOpenModalOrder}
+        />
+      )} */}
     </>
   );
 };

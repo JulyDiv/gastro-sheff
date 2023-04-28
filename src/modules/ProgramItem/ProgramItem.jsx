@@ -4,18 +4,19 @@ import { weekdayData } from "../../utils/weekday";
 import { ButtonWeek } from "../../components/ButtonWeek/ButtonWeek";
 import { ProgramList } from "../ProgramList/ProgramList";
 import { ProgramWeek } from "../ProgramWeek/ProgramWeek";
+import { ModalOrder } from "../ModalOrder/ModalOrder";
 
 export const ProgramItem = ({ program }) => {
-
+  const [isOpenModalOrder, setIsOpenModalOrder] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [pack, setPack] = useState("");
 
   const onClick = () => {
-
+    setIsOpenModalOrder(true);
     //console.log(program);
   };
 
-  console.log(pack);
+  //console.log(pack);
 
   return (
     <div key={program.id} className={styles.block}>
@@ -31,7 +32,12 @@ export const ProgramItem = ({ program }) => {
           ))}
         </div>
         {/* <Link href="#form" className={`${styles.info_button} button`}>Заказать</Link> */}
-        <button className={`${styles.info_button} button`} onClick={() => onClick()}>Заказать</button>
+        <button
+          className={`${styles.info_button} button`}
+          onClick={() => onClick()}
+        >
+          Заказать
+        </button>
       </div>
 
       <div className={styles.chart}>
@@ -62,6 +68,14 @@ export const ProgramItem = ({ program }) => {
           )}
         </div>
       </div>
+      {isOpenModalOrder && (
+        <ModalOrder
+          programName={program.name}
+          pack={pack}
+          isOpenModalOrder={isOpenModalOrder}
+          setIsOpenModalOrder={setIsOpenModalOrder}
+        />
+      )}
     </div>
   );
 };

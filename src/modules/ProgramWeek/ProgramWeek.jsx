@@ -7,6 +7,7 @@ export const ProgramWeek = ({ item, pack, setPack }) => {
     //setPack((current) => !current);
     setPack(item);
   }
+
   return (
     <ul key={item.id} className={styles.list} onClick={() => onClick(item)}>
       <li className={`${styles.item} ${styles.item_name}`}>
