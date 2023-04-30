@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useContext } from "react";
 import Head from "next/head";
 import { Header } from "../modules/Header/Header";
 import { Footer } from "../modules/Footer/Footer";
@@ -5,8 +7,15 @@ import { PhotoHome } from "../modules/PhotoHome/PhotoHome";
 import { Program } from "../modules/Program/Program";
 import { Sidebar } from "../modules/Sidebar/Sidebar";
 import { Main } from "../modules/Main/Main";
+import { AppContext } from "../context/AppContext";
 
 export default function Home() {
+  const { getOrder } = useContext(AppContext);
+
+  // useEffect(() => {
+  //   getOrder();
+  // }, []);
+
   return (
     <>
       <Head>
@@ -15,7 +24,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="circle">
-        <Header />
+        {/* <Header /> */}
         {/* <div style={{ height: "1000px" }}>
           <Sidebar />
         </div> */}
