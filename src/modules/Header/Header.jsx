@@ -11,7 +11,7 @@ export const Header = () => {
         <div className={styles.wrapper}>
           <div className={styles.logo}>
             <img src="/img/logo.png" alt="logo" className={styles.img} />
-            <span className={styles.span}>healthy ration</span>
+            <span className={styles.span}>сервис здорового питания</span>
           </div>
           <Navbar />
         </div>

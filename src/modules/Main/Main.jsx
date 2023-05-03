@@ -9,28 +9,50 @@ import { Test } from "../ATest/Test";
 import { FormItem } from "../FormItem/FormItem";
 
 export const Main = () => {
-  const [isSignForm, setIsSignForm] = useState(false);
+  //const [isSignForm, setIsSignForm] = useState(false);
   const [isLoginForm, setIsLoginForm] = useState(false);
-  const [isForm, setIsForm] = useState(false);
+  //const [isForm, setIsForm] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
 
-  const { isLogged, setIsLogged, orders, getOrder, user } =
-    useContext(AppContext);
+  const {
+    isLogged,
+    setIsLogged,
+    orders,
+    getOrder,
+    user,
+    isSignForm,
+    setIsSignForm,
+    isForm,
+    setIsForm,
+    setOrders
+  } = useContext(AppContext);
 
   //console.log(isLogged);
 
-  const onClick = () => {
-    getOrder();
+  const logOut = () => {
+    setIsLogged(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+    //setIsLogged(localStorage.clear());
+  }
+
+  const onClick = (id) => {
+    //getOrder();
+    let newOrders = [...orders].filter((item) => item.userId === isLogged.id);
     setIsOrder(true);
+    setOrders(newOrders);
+    isOrder ? setIsOrder(false) : setIsOrder(true);
+    //getOrder();
   };
 
-  //console.log(isOrder);
+  console.log(isLogged.id);
 
   return (
     <>
       <section className={styles.main}>
         <div className="container">
-          <button onClick={() => setIsLogged(false)}>Log Out</button>
+          <button onClick={() => logOut()}>Log Out</button>
           <br />
           <button onClick={() => setIsForm(true)}>Log In</button>
           <div className={styles.wrapper}>
@@ -44,21 +66,23 @@ export const Main = () => {
                     : "Зарегистрируйте личный кабинет"
                 }
                 isForm={isForm}
-                isLoginForm={isLoginForm}
                 isSignForm={isSignForm}
                 setIsForm={setIsForm}
                 setIsSignForm={setIsSignForm}
-                setIsLoginForm={setIsLoginForm}
               />
-            ) : ""}
+            ) : (
+              ""
+            )}
           </div>
           {isLogged && (
             <>
               <h1>{user + isLogged.name}</h1>
-              <button onClick={() => onClick()}>Click</button>
+              <button onClick={() => onClick(isLogged.id)}>Click</button>
               {isOrder &&
                 orders.map((order, id) => (
                   <div key={id}>
+                    <p>{order.name}</p>
+                    <p>{order.userId}</p>
                     <p>{order.program}</p>
                     <p>{order.sum}</p>
                     <p>{order.date}</p>

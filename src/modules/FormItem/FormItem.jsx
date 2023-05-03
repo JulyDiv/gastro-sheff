@@ -13,18 +13,11 @@ export const FormItem = ({
   text,
   title,
   button,
-  isLoginForm,
   isSignForm,
-  setIsLoginForm,
   setIsSignForm,
   isForm,
   setIsForm,
 }) => {
-  //const [isModalOrder, setIsModalOrder] = useState(false);
-  //const [isTextError, setIsTextError] = useState(false);
-  //const [isTextUser, setIsTextUser] = useState(false);
-  //const [isSingError, setIsSingError] = useState(false);
-  //const [userName, setUserName] = useState();
 
   const { users, sing, error, user, isLogged, setIsLogged, setUserName } =
     useContext(AppContext);
@@ -38,13 +31,10 @@ export const FormItem = ({
     mode: "onBlur",
   });
 
-  // const error = "Такой пользователь не зарегистрирован";
-  // const sing = "Такой пользователь уже зарегистрирован";
-  // const user = "Добро пожаловать, ";
-
   const onSubmit = (data) => {
     const { name, phone } = data;
     let login = users.filter((item) => item.phone === phone);
+    console.log(login);
 
     if (isForm) {
       if (login.length === 1) {
@@ -82,7 +72,8 @@ export const FormItem = ({
           .post(`${process.env.NEXT_PUBLIC_API_HOST}/users`, {
             name: name,
             phone: phone,
-            date: new Date().toLocaleString(),
+            dateUser: new Date().toLocaleString(),
+            date: new Date(),
           })
           .then(({ data }) => {
             window.location.reload();
@@ -119,6 +110,7 @@ export const FormItem = ({
             placeholder="Номер телефона"
             name="Номер телефона"
             type="number"
+            //type="tel"
             message="Поле обязательно для ввода"
             messageErr="Неверные символы"
             errors={errors.phone}

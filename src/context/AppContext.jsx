@@ -11,9 +11,12 @@ const AppWrapper = ({ children }) => {
   //const [logins, setLogins] = useState();
   //const [pass, setPass] = useState("");
   const [isLogged, setIsLogged] = useState(false);
+  //const [isLogged, setIsLogged] = useState([]);
   const [orders, setOrders] = useState([]);
   //const [storage, setStorage] = useState();
   const [userName, setUserName] = useState();
+  const [isSignForm, setIsSignForm] = useState(false);
+  const [isForm, setIsForm] = useState(false);
 
   useEffect(() => {
     const user = localStorage.user ? JSON.parse(localStorage.user) : [];
@@ -21,6 +24,8 @@ const AppWrapper = ({ children }) => {
       setIsLogged(user);
     }
   }, []);
+
+  console.log(isLogged);
 
   useEffect(() => {
     window.addEventListener("beforeunload", () => {
@@ -63,10 +68,10 @@ const AppWrapper = ({ children }) => {
     getUser();
   }, []);
 
-  const getOrder = async () => {
+  const getOrder = () => {
     //setIsLoading(true);
-    return await axios
-      .get(`${process.env.NEXT_PUBLIC_API_HOST}/users/${isLogged.id}/orders`)
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_HOST}/orders`)
       .then(({ data }) => {
         setOrders(data);
         //setIsLoading(false);
@@ -75,6 +80,14 @@ const AppWrapper = ({ children }) => {
         console.error(error.message);
       });
   };
+
+  useEffect(() => {
+    getOrder();
+  }, []);
+
+    // useEffect(() => {
+    //   getOrder();
+    // }, [isLogged]); убрать релоад после выхода из акка и проверить списки заказов у каждого юзера на соответсвие
 
   //console.log(isLogged.id);
 
@@ -95,8 +108,13 @@ const AppWrapper = ({ children }) => {
     isLogged,
     setIsLogged,
     orders,
+    setOrders,
     userName,
     setUserName,
+    isSignForm,
+    setIsSignForm,
+    isForm,
+    setIsForm,
   };
 
   return (

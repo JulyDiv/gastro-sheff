@@ -42,20 +42,19 @@ export const ModalOrder = ({
     //console.log(users);
     //console.log(id);
     axios
-      .post(
-        `https://642992c4ebb1476fcc4c4270.mockapi.io/users/${isLogged.id}/orders`,
-        {
-          name: isLogged.name,
-          phone: isLogged.phone,
-          email: email,
-          program: programName,
-          sum: pack.sale,
-          time: time,
-          test: test,
-          agree: agree,
-          date: new Date().toLocaleString(),
-        }
-      )
+      .post(`https://642992c4ebb1476fcc4c4270.mockapi.io/orders`, {
+        userId: isLogged.id,
+        name: isLogged.name,
+        phone: isLogged.phone,
+        email: email,
+        program: programName,
+        sum: pack.sale,
+        time: time,
+        test: test,
+        agree: agree,
+        dateOrder: new Date().toLocaleString(),
+        date: new Date(),
+      })
       .then(({ data }) => {
         console.log(data);
         reset();
@@ -63,7 +62,6 @@ export const ModalOrder = ({
       .catch(function (error) {
         console.log(error.message);
       });
-    //console.log(data);
   };
 
   const onClick = () => {};

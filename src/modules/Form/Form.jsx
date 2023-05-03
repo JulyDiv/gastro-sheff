@@ -82,7 +82,7 @@ export const Form = ({
       console.log(error);
       setIsTextError(true);
       setIsTextUser(false);
-      setIsLogged(false);
+      //setIsLogged(false);
       }
     } else {
       if (login.length === 1) {

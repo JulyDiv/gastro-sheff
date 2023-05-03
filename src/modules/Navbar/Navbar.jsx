@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.sass";
+import { AppContext } from "../../context/AppContext";
+import { FormItem } from "../FormItem/FormItem";
 
 export const Navbar = () => {
+  const [isOpenCall, setIsOpenCall] = useState(false);
+
+  const { isSignForm, setIsSignForm, isForm, setIsForm } =
+    useContext(AppContext);
+
+  const onClick = () => {
+    isOpenCall ? setIsOpenCall(false) : setIsOpenCall(true);
+  };
 
   return (
     <>
@@ -10,18 +20,23 @@ export const Navbar = () => {
         <div className={styles.wrapper}>
           <ul className={styles.list}>
             <li className={styles.item}>
-              <Link href="#" className={styles.link}>
-                Програмы питания
+              <Link href="/" className={styles.link}>
+                Главная
               </Link>
             </li>
             <li className={styles.item}>
               <Link href="#" className={styles.link}>
-                Бизнес-ланчи
+                Меню
               </Link>
             </li>
             <li className={styles.item}>
               <Link href="#" className={styles.link}>
-                Gastro Shop
+                Ацкии
+              </Link>
+            </li>
+            <li className={styles.item}>
+              <Link href="#" className={styles.link}>
+                Вакансии
               </Link>
             </li>
             <li className={styles.item}>
@@ -29,19 +44,20 @@ export const Navbar = () => {
                 О нас
               </Link>
             </li>
-            <li className={styles.item}>
-              <Link href="#" className={styles.link}>
-                Блог
-              </Link>
-            </li>
           </ul>
         </div>
-        {/* <Link href="#" className={styles.phone}>
-          +38 (068) 949 - 49 - 19
-        </Link> */}
-        <Link href="#" className={styles.phone}>
+        <button className={styles.phone} onClick={() => onClick()}>
           Заказать звонок
-        </Link>
+        </button>
+      </div>
+      <div className={styles.block}>
+        {isOpenCall && (
+          <FormItem
+            button="Заказать звонок"
+            isSignForm={true}
+            setIsSignForm={setIsSignForm}
+          />
+        )}
       </div>
     </>
   );
